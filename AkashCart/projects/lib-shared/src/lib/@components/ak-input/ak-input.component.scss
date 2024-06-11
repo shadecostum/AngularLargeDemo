@@ -1,0 +1,362 @@
+.default-style {
+    position: relative;
+  
+    .form-group {
+      position: relative;
+      width: 100%;
+      height: max-content;
+      overflow: hidden;
+  
+      .input-group {
+        position: relative;
+        height: 48px;
+        border-radius: 4px 4px 0 0;
+        font-size: 13px;
+        border-bottom: 3px solid rgb(0, 0, 0);
+  
+        .input-control {
+          position: relative;
+          display: block;
+          width: 100%;
+          border: none;
+          background-color: rgb(241, 241, 241);
+          padding: 8px 0;
+          height: 48px;
+          outline: none !important;
+          font-size: var(--font-size-12);
+          color: rgb(24, 208, 208);
+          transition: all 0.125s ease-in-out;
+        }
+  
+        .input-control:disabled {
+          color: rgb(186, 12, 12);
+          background-color: aqua;
+          -webkit-text-fill-color: var(--text-color-dark-shade-1);
+          opacity: 1;
+          -webkit-opacity: 1;
+          cursor: no-drop !important;
+        }
+  
+        .input-control:enabled.input-control:hover,
+        .input-control:focus {
+            background-color: rgb(233, 241, 170);
+          border-color: blue;
+          color: green;//used inside text typing color hover 
+        }
+
+        .input-control:read-only {
+          cursor: no-drop !important;
+        }
+  
+        .input-control:read-only,
+        .input-control:valid,
+        .input-control:focus {
+          padding: 15px 0 7px 0;
+        }
+  
+        .input-label {
+          position: absolute;
+          top: 0;
+          left: 0;
+          text-align: left;
+          display: block;
+          width: 100%;
+          text-overflow: ellipsis;
+          height: 48px;
+          line-height: 64px;
+          // text-transform: uppercase;
+          font-size: var(--font-size-12);
+          font-weight: 200;
+          cursor: text;
+          transition: all 0.125s ease-in-out;
+  
+          .label {
+            color: var(--text-color-dark-shade-1);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            .required {
+              color: yellowgreen;
+            }
+          }
+        }
+  
+        .input-label-with-icon-container,
+        .input-control-with-icon,
+        .input-control-with-icon:valid,
+        .input-control-with-icon:focus {
+          padding-left: 20px !important;
+        }
+  
+        .input-control-with-right-icon,
+        .input-control-with-right-icon:valid,
+        .input-control-with-right-icon:focus {
+          padding-right: 20px !important;
+        }
+  
+        .input-control:focus + .input-label,
+        .input-label-floating {
+          height: 20px !important;
+          line-height: 20px !important;
+          font-size: 13px !important;
+          color: yellow;// when floating color change used 
+        }
+  
+        .icon {
+          display: inline-block;
+          width: 20px;
+          position: absolute;
+          left: 0;
+          top: 22px;
+          background-color: transparent;
+          padding: 0 2px;
+  
+          i,
+          .app-icon {
+            color: violet;
+            font-size: 12px;
+          }
+        }
+  
+        .actions-wrapper {
+          display: flex;
+          white-space: nowrap;
+          position: absolute;
+          right: 0;
+          top: 22px;
+          background-color: transparent;
+  
+          &.withShowLabelFalse{
+            top: 5px;
+          }
+  
+          .action {
+            display: inline-block;
+            vertical-align: top;
+            padding: 0 2px;
+            cursor: pointer;
+  
+            i,
+            .app-icon {
+              color: lightgreen;
+              font-size:12px;
+            }
+          }
+        }
+      }
+  
+      .input-group-error {
+        .input-control {
+          border-color: red !important;
+        }
+  
+        .input-label {
+          color: mediumvioletred !important;
+        }
+      }
+  
+      .input-help-text,
+      .input-error {
+        color: rgb(64, 10, 240);
+        position: relative;
+        display: block;
+        font-size: 0.75rem;
+      }
+  
+      .input-message{
+        min-height: 10px;
+        max-height: 15px;
+      }
+  
+      .input-error {
+        color: rgb(230, 17, 17)!important;
+      }
+    }
+  }
+  
+  .bordered-style {
+    .form-group {
+      .input-group {
+        padding-top: 8px;
+  
+        .input-control {
+          border: 1px solid greenyellow;
+          border-radius: 4px;
+          padding: 0 8px;
+          height: 40px;
+        }
+  
+        .input-label {
+          padding: 0 4px;
+          margin-left: 4px;
+          line-height: 58px;
+          display: inline-block;
+          width: max-content;
+          height: 48px;
+        }
+  
+        .input-control:read-only,
+        .input-control:valid,
+        .input-control:focus {
+          padding: 15px 8px !important;
+        }
+  
+        .input-control:focus + .input-label,
+        .input-label-floating {
+          height: 20px;
+          line-height: 20px;
+          font-size:12px;
+          background-color: fuchsia;
+        }
+  
+        .input-control-with-icon,
+        .input-control-with-icon:valid,
+        .input-control-with-icon:focus {
+          padding-left: 24px !important;
+        }
+  
+        .input-control-with-right-icon,
+        .input-control-with-right-icon:valid,
+        .input-control-with-right-icon:focus {
+          padding-right: 24px !important;
+        }
+  
+        .icon {
+          top: 18px;
+          margin-left: 4px;
+        }
+  
+        .actions-wrapper {
+          top: 18px;
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+  
+  .disable-floating-label {
+    .form-group {
+      .input-group-error,
+      .input-group {
+        .input-control:focus + .input-label,
+        .input-label-floating {
+          display: none !important;
+        }
+  
+        .input-label {
+          color: seagreen!important;
+        }
+      }
+    }
+  }
+  
+  .no-label {
+    position: relative;
+  
+    .form-group {
+      position: relative;
+      width: 100%;
+      // height: 28px !important;
+      overflow: hidden;
+  
+      .input-group {
+        position: relative;
+        height: 26px;
+        border-radius: 4px 4px 0 0;
+  
+        .input-control {
+          height: 26px;
+        }
+  
+        .input-control:read-only,
+        .input-control:valid,
+        .input-control:focus {
+          padding: 0 0 4px 0 !important;
+        }
+  
+        .icon {
+          top: 3px;
+        }
+      }
+  
+      .input-message{
+        min-height: 10px;
+        max-height: 15px;
+      }
+    }
+  }
+  
+  .input-control-rtl {
+    .default-style {
+      .form-group {
+        .input-group {
+          border-radius: 4px 4px 0 0;
+  
+          .input-label {
+            left: auto;
+            right: 0;
+            text-align: right;
+          }
+  
+          .input-label-with-icon-container,
+          .input-control-with-icon,
+          .input-control-with-icon:valid,
+          .input-control-with-icon:focus {
+            padding-left: 0px !important;
+            padding-right: 20px !important;
+          }
+  
+          .input-control-with-right-icon,
+          .input-control-with-right-icon:valid,
+          .input-control-with-right-icon:focus {
+            padding-left: 20px !important;
+          }
+  
+          .icon {
+            left: auto;
+            right: 0;
+          }
+  
+          .actions-wrapper {
+            right: auto;
+            left: 0;
+          }
+        }
+      }
+    }
+  
+    .bordered-style {
+      .form-group {
+        .input-group {
+          .input-label {
+            margin-left: auto;
+            margin-right: 4px;
+          }
+  
+          .input-control-with-icon,
+          .input-control-with-icon:valid,
+          .input-control-with-icon:focus {
+            padding-left: auto !important;
+            padding-right: 24px !important;
+          }
+  
+          .input-control-with-right-icon,
+          .input-control-with-right-icon:valid,
+          .input-control-with-right-icon:focus {
+            padding-left: 24px !important;
+          }
+  
+          .icon {
+            margin-left: auto;
+            margin-right: 4px;
+          }
+  
+          .actions-wrapper {
+            margin-right: auto;
+            margin-left: 4px;
+          }
+        }
+      }
+    }
+  }
+  

@@ -1,0 +1,52 @@
+<!-- product-form.component.html -->
+
+<div class="product-form">
+  <h2>Add New Product</h2>
+  <form #productAddForm="ngForm" (ngSubmit)="submitForm(productAddForm.value)" >
+    <div class="form-group">
+      <label for="productName">Product Name</label>
+      <input type="text"  name="productName" ngModel required>
+    </div>
+    <div class="form-group">
+      <label for="productPrice">Product Price</label>
+      <input type="number"  name="productPrice" ngModel required>
+    </div>
+    <div class="form-group">
+      <label for="productDescription">Product Description</label>
+      <textarea name="productDescription" ngModel required></textarea>
+    </div>
+    <input type="submit" class="btn" value="{{updateButton? 'Update Data': 'submitForm'}}" >
+  </form>
+</div>
+
+
+
+<!--product-table.component.html-->
+<button type="submit"  (click)="getAllTableData()">Show New Product</button>
+<button type="submit"  (click)="deleteAllRecordData()">clear All Product</button>
+
+<div class="product-table">
+  <h2>Product List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Product Price</th>
+        <th>Description</th>
+        <th>Delete</th>
+        <th>Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of allProducts">
+      
+        <td>{{ product.productName }}</td>
+        <td>{{ product.productPrice | currency  }}</td>
+        <td>{{ product.productDescription }}</td>
+        <td><button type="submit" class="danger" (click)="  deleteARecordData(product.id)">Delete</button></td>
+        <td><button type="submit" class="danger" (click)="  UpdateRecordData(product.id)">Update</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

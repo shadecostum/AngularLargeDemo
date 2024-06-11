@@ -1,0 +1,342 @@
+<div [ngClass]="{ 'input-control-rtl': direction === 'rtl' }">
+  <div
+    class="default-style"
+    [ngClass]="{
+      'bordered-style': style === 'style3' || style === 'style4',
+      'disable-floating-label': style === 'style2' || style === 'style4',
+      'no-label': !showLabel
+    }"
+  >
+    <div class="form-group">
+      <div class="input-group" [ngClass]="{ 'input-group-error': error }">
+        <!-- pattern -->
+        <input
+          *ngIf="inputType == 'pattern'"
+          #inputField
+          [id]="id + label"
+          [name]="name ? name : label"
+          class="input-control {{ addClass }}"
+          [type]="type"
+          [placeholder]="!showLabel ? label : ''"
+          [ngClass]="{ 'input-control-with-icon': icon }"
+          [value]="value"
+          (blur)="touched()"
+          [attr.minLength]="minLength"
+          [attr.maxLength]="maxLength"
+          (input)="changed($event)"
+          (focus)="onFocus($event)"
+          (focusout)="onFocusOut($event)"
+          (blur)="onBlur($event)"
+          [disabled]="disabled"
+          [readonly]="readonly"
+          type="text"
+          [autofocus]="autofocus"
+          autocomplete="off"
+          [attr.autocomplete]="false"
+          [pattern]="pattern"
+        />
+
+        <!-- normal -->
+        <input
+          *ngIf="inputType === 'normal'"
+          #inputField
+          [id]="id + label"
+          [placeholder]="!showLabel ? label : ''"
+          [name]="name ? name : label"
+          class="input-control {{ addClass }}"
+          [type]="type"
+          [ngClass]="{ 'input-control-with-icon': icon }"
+          [value]="value"
+          (blur)="touched()"
+          [attr.minLength]="minLength"
+          [attr.maxLength]="maxLength"
+          (input)="changed($event)"
+          (focus)="onFocus($event)"
+          (focusout)="onFocusOut($event)"
+          (blur)="onBlur($event)"
+          [disabled]="disabled"
+          [readonly]="readonly"
+          type="text"
+          [autofocus]="autofocus"
+          autocomplete="off"
+          [attr.autocomplete]="false"
+        />
+        <!-- numeric -->
+        <input
+          *ngIf="inputType === 'numeric'"
+          #inputField
+          [id]="id + label"
+          [name]="name ? name : label"
+          class="input-control {{ addClass }}"
+          [type]="type"
+          [ngClass]="{ 'input-control-with-icon': icon }"
+          [value]="value"
+          (blur)="touched()"
+          [attr.minLength]="minLength"
+          [attr.maxLength]="maxLength"
+          (input)="changed($event)"
+          (focus)="onFocus($event)"
+          (focusout)="onFocusOut($event)"
+          (blur)="onBlur($event)"
+          [disabled]="disabled"
+          [readonly]="readonly"
+          type="text"
+          [autofocus]="autofocus"
+          autocomplete="off"
+          [attr.autocomplete]="false"
+          numericInput
+        />
+
+        <!-- email -->
+        <input
+          *ngIf="inputType === 'email'"
+          #inputField
+          [id]="id + label"
+          [name]="name ? name : label"
+          class="input-control {{ addClass }}"
+          [type]="type"
+          [ngClass]="{ 'input-control-with-icon': icon }"
+          [value]="value"
+          (blur)="touched()"
+          [attr.minLength]="minLength"
+          [attr.maxLength]="maxLength"
+          (input)="changed($event)"
+          (focus)="onFocus($event)"
+          (focusout)="onFocusOut($event)"
+          (blur)="onBlur($event)"
+          [disabled]="disabled"
+          [readonly]="readonly"
+          type="email"
+          [autofocus]="autofocus"
+          autocomplete="off"
+          [attr.autocomplete]="false"
+        />
+
+        <!-- alphaNumeric -->
+        <input
+          *ngIf="inputType === 'alphaNumeric'"
+          #inputField
+          [id]="id + label"
+          [name]="name ? name : label"
+          class="input-control {{ addClass }}"
+          [type]="type"
+          [ngClass]="{ 'input-control-with-icon': icon }"
+          [value]="value"
+          (blur)="touched()"
+          [attr.minLength]="minLength"
+          [attr.maxLength]="maxLength"
+          (input)="changed($event)"
+          (focus)="onFocus($event)"
+          (focusout)="onFocusOut($event)"
+          (blur)="onBlur($event)"
+          [disabled]="disabled"
+          [readonly]="readonly"
+          type="text"
+          [autofocus]="autofocus"
+          autocomplete="off"
+          [attr.autocomplete]="false"
+          alphaNumericInput
+        />
+        <!-- noSpaceAlphaNumeric -->
+        <input
+          *ngIf="inputType === 'noSpaceAlphaNumeric'"
+          #inputField
+          [id]="id + label"
+          [name]="name ? name : label"
+          class="input-control {{ addClass }}"
+          [type]="type"
+          [ngClass]="{ 'input-control-with-icon': icon }"
+          [value]="value"
+          (blur)="touched()"
+          [attr.minLength]="minLength"
+          [attr.maxLength]="maxLength"
+          (input)="changed($event)"
+          (focus)="onFocus($event)"
+          (focusout)="onFocusOut($event)"
+          (blur)="onBlur($event)"
+          [disabled]="disabled"
+          [readonly]="readonly"
+          type="text"
+          [autofocus]="autofocus"
+          autocomplete="off"
+          [attr.autocomplete]="false"
+          noSpaceInput
+          alphaNumericInput
+        />
+        <!-- noSpace -->
+
+        <!--decimal-->
+        
+<input
+*ngIf="inputType === 'decimalFormat'"
+#inputField
+[id]="id + label"
+[name]="name ? name : label"
+class="input-control {{ addClass }}"
+[type]="type"
+[ngClass]="{ 'input-control-with-icon': icon }"
+[value]="value"
+(blur)="touched()"
+[attr.minLength]="minLength"
+[attr.maxLength]="maxLength"
+(input)="changed($event)"
+(focus)="onFocus($event)"
+(focusout)="onFocusOut($event)"
+(blur)="onBlur($event)"
+[disabled]="disabled"
+[readonly]="readonly"
+type="text"
+[autofocus]="autofocus"
+autocomplete="off"
+[attr.autocomplete]="false"
+decimalFormat
+
+/>
+
+        <input
+          *ngIf="inputType === 'noSpace'"
+          #inputField
+          [id]="id + label"
+          [name]="name ? name : label"
+          class="input-control {{ addClass }}"
+          [type]="type"
+          [ngClass]="{ 'input-control-with-icon': icon }"
+          [value]="value"
+          (blur)="touched()"
+          [attr.minLength]="minLength"
+          [attr.maxLength]="maxLength"
+          (input)="changed($event)"
+          (focus)="onFocus($event)"
+          (focusout)="onFocusOut($event)"
+          (blur)="onBlur($event)"
+          [disabled]="disabled"
+          [readonly]="readonly"
+          type="text"
+          [autofocus]="autofocus"
+          autocomplete="off"
+          [attr.autocomplete]="false"
+          noSpaceInput
+        />
+        <!-- currencyformatter -->
+        <input
+          *ngIf="inputType === 'currencyformatter'"
+          #inputField
+          [id]="id + label"
+          [name]="name ? name : label"
+          class="input-control {{ addClass }}"
+          [type]="type"
+          [ngClass]="{
+            'input-control-with-icon': icon,
+            'input-control-with-right-icon': rightIcon
+          }"
+          [value]="value"
+          [(ngModel)]="value"
+          (blur)="touched()"
+          [attr.minLength]="minLength"
+          [attr.maxLength]="maxLength"
+          (input)="changed($event)"
+          (focus)="onFocus($event)"
+          (focusout)="onFocusOut($event)"
+          (blur)="onBlur($event)"
+          [disabled]="disabled"
+          [readonly]="readonly"
+          type="text"
+          [autofocus]="autofocus"
+          autocomplete="off"
+          [attr.autocomplete]="false"
+          currencyformatter
+          [attr.textAlign]="textAlign"
+          [attr.digit]="digit"
+          [attr.decimal]="decimal"
+          [attr.currencyCode]="currencyCode"
+          [attr.regex]="regex"
+          [attr.allowZero]="allowZero"
+          [attr.zeroAfterDecimal]="zeroAfterDecimal"
+          [attr.isShowZeroAmount]="isShowZeroAmount"
+        />
+
+        
+        <!-- cardNumber -->
+        <input
+          *ngIf="inputType === 'cardNumber'"
+          #inputField
+          [id]="id + label"
+          [name]="name ? name : label"
+          class="input-control {{ addClass }}"
+          [type]="type"
+          [ngClass]="{
+            'input-control-with-icon': icon,
+            'input-control-with-right-icon': rightIcon
+          }"
+          [value]="value"
+          (blur)="touched()"
+          [attr.minLength]="'16'"
+          [attr.maxLength]="'16'"
+          (input)="changed($event)"
+          (focus)="onFocus($event)"
+          (focusout)="onFocusOut($event)"
+          (blur)="onBlur($event)"
+          [disabled]="disabled"
+          [readonly]="readonly"
+          type="text"
+          [autofocus]="autofocus"
+          autocomplete="off"
+          [attr.autocomplete]="false"
+          cardNumber
+        />
+
+
+        <label
+          class="input-label"
+          [for]="id + label"
+          [ngClass]="{
+            'input-label-floating': value,
+            'input-label-with-icon-container': icon,
+            'text-right': inputType == 'currencyformatter' && textAlign == 'right'
+          }"
+          *ngIf="showLabel"
+        >
+          <span class="label">
+            {{ label
+            }}<span class="required" *ngIf="required && label">*</span>
+          </span>
+        </label>
+
+        <div class="icon" *ngIf="icon">
+          <!-- <aps-icon icon="{{ icon }}" class="app-icon"></aps-icon>
+        </div>
+
+        <div class="actions-wrapper" [ngClass]="{'withShowLabelFalse': !showLabel}">
+          <div class="action" *ngIf="showClear && value" (click)="clearInput()">
+            <aps-icon icon="fa-times" class="app-icon"></aps-icon>
+          </div>
+          <div class="action" *ngIf="rightIcon" (click)="onRightIconClick()">
+            <aps-icon
+              icon="{{ rightIcon }}"
+              class="app-icon"
+              [pTooltip]="toolTip ? toolTip : ''"
+            ></aps-icon> -->
+          </div>
+          <div class="action" *ngIf="rightLabel" (click)="onRightIconClick()">
+            {{ rightLabel }}
+          </div>
+        </div>
+      </div>
+      <div class="input-message" >
+        <span
+        *ngIf="helpText && !error"
+        class="white-space-nowrap text-overflow-ellipsis input-help-text"
+        [title]="helpText"
+        >{{ helpText }}</span
+      >
+      <span
+        *ngIf="errorMessage"
+        class="white-space-nowrap text-overflow-ellipsis input input-error"
+        [title]="errorMessage"
+        >{{ errorMessage }}</span
+      >
+      </div>
+      
+    </div>
+  </div>
+

@@ -1,0 +1,185 @@
+<ng-container *ngIf="!isRadioButtonView">
+  <div
+    [ngClass]="{
+      'select-control-rtl': direction === 'rtl',
+      'background-primary': backgroundStyle === 'primary'
+    }"
+  >
+    <div
+      class="default-style"
+      [ngClass]="{
+        'bordered-style': style === 'style3' || style === 'style4',
+        'disable-floating-label': style === 'style2' || style === 'style4',
+        'no-label': !showLabel
+      }"
+    >
+      <div class="form-group">
+        <div class="input-group" [ngClass]="{ 'input-group-error': error }">
+          <div class="main-input-control">
+            <input class="" type="text" [(ngModel)]="value" />
+          </div>
+          <input
+            [id]="elementId"
+            [name]="name"
+            [class]="class"
+            [ngClass]="{
+              'select-control-with-icon': icon,
+              'border-color-primary': isHover
+            }"
+            (blur)="touched()"
+            [(ngModel)]="displayName"
+            [disabled]="isDisabled"
+            [readOnly]="true"
+            type="text"
+          />
+          <div
+            class="overlay-select"
+            (click)="isDisabled ? null : toggleDropdown($event)"
+            (mouseenter)="isHover = true"
+            (mouseleave)="isHover = false"
+            *ngIf="displayName || value"
+          ></div>
+          <!-- (focusout)="hideDropdown($event)" -->
+          <!-- (click)="isDisabled ? null : onClickDropdown($event)" -->
+
+          <label
+            class="input-label"
+            [for]="id + label"
+            (click)="isDisabled ? null : toggleDropdown($event)"
+            [ngClass]="{
+              'input-label-floating': value,
+              'input-label-with-icon-container': icon
+            }"
+            (mouseenter)="isHover = true"
+            (mouseleave)="isHover = false"
+            *ngIf="showLabel"
+          >
+            <span class="label">
+              {{ label
+              }}<span class="required" *ngIf="required && label">*</span>
+            </span>
+          </label>
+
+          <div
+            class="icon"
+            *ngIf="icon"
+            (click)="isDisabled ? null : toggleDropdown($event)"
+          >
+            <!-- <aps-icon icon="{{ icon }}" class="app-icon"></aps-icon> -->
+          </div>
+
+          <div class="actions-wrapper">
+            <div
+              class="action"
+              (click)="isDisabled ? null : toggleDropdown($event)"
+            >
+              <!-- <aps-icon
+                icon="fa-solid fa-caret-down"
+                [class]="colorClass + ' app-icon text-size-14'"
+              ></aps-icon> -->
+            </div>
+            <div class="action" *ngIf="showDelete">
+              <!-- <aps-icon icon="fa-trash-alt" class="app-icon"></aps-icon> -->
+            </div>
+            <div
+              class="action"
+              *ngIf="showClear && value"
+              title="Clear Selection"
+            >
+              <!-- <aps-icon
+                icon="fa-times"
+                class="app-icon"
+                (click)="onClearSelection()"
+              ></aps-icon> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="input-message" >
+          <span
+          *ngIf="helpText && !error"
+          class="white-space-nowrap text-overflow-ellipsis input-help-text"
+          [title]="helpText"
+          >{{ helpText }}</span
+        >
+        <span
+          *ngIf="error"
+          class="input-error"
+          class="white-space-nowrap text-overflow-ellipsis input input-error"
+          [title]="errorMessage"
+          >{{ errorMessage }}</span
+        >
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="dropdown-container">
+    <div class="dropdown">
+      <p-dropdown
+        #dropdown
+        [attr.options]="data"
+        [(ngModel)]="val"
+        appendTo="body"
+        (onChange)="onOptionChange($event)"
+        optionLabel="displayName"
+        (onBlur)="hideDropdown($event)"
+        (onHide)="onHideDropdown()"
+        [tabindex]="-1"
+        optionValue="id"
+        [attr.filter]="filter"
+        [disabled]="isDisabled"
+        optionDisabled="optionDisabled"
+        [attr.readonly]="readonly"
+        [attr.autoDisplayFirst]="false"
+        [attr.emptyMessage]="emptyMessage"
+        panelStyleClass="text-sm"
+      ></p-dropdown>
+    </div>
+  </div>
+
+  <!-- Confirm Modal -->
+  <!-- <aps-modal
+    *ngIf="isOpenConfirm"
+    [(isShow)]="isOpenConfirm"
+    [headerText]="'Confirm'"
+    (onClose)="onConfirm(false)"
+  > -->
+    <!-- <div class="grid mt-3" body>
+      <div class="col-12 text-base">{{ confirmMessage }}</div>
+      <div class="col-12 mt-3 py-0 text-right">
+        <button
+          class="btn btn-md btn-primary"
+          (click)="onConfirm(true); isOpenConfirm = false"
+        >
+          {{ confirmBtnCaption }}
+        </button>
+      </div>
+    </div>
+  </aps-modal> -->
+</ng-container>
+
+<ng-container *ngIf="isRadioButtonView">
+  <div class="text-xs text-color-light-shade-1" *ngIf="showLabel">
+    {{ label 
+    }}<span class="text-color-danger" *ngIf="required">*</span>
+  </div>
+  <ng-container *ngFor="let d of data; let i = index">
+    <p-radioButton
+      [ngClass]="{
+        'text-color-primary': value == d.id,
+        verticalStyle: isRadioStyleVertical
+      }"
+      class="mr-3"
+      [id]="elementId + i"
+      [name]="name"
+      [(ngModel)]="value"
+      [attr.value]="d.id"
+      [attr.label]="d.displayName"
+      labelStyleClass="text-sm"
+      (onClick)="onOptionSelect(d.id)"
+    ></p-radioButton>
+  </ng-container>
+</ng-container>

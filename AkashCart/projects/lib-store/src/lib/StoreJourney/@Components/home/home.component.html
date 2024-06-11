@@ -1,0 +1,74 @@
+<div>
+    <div>
+<div>
+    <app-ak-input
+[ngClass]="{
+    'input-wrapper': viewport != 'web',
+    'width-90': viewport == 'web',
+  }"
+    [label]="'Loan Purpose'"
+    [name]="'loanPurpose'"
+    (onInput)="updateValues()"
+    [(ngModel)]="ds"
+    inputType="normal"
+    [id]="'loanPurpose'"
+    [disabled]="false"
+    [required]="true"
+   [inputType]="'normal'"
+>
+
+</app-ak-input>
+
+
+
+
+<h1>hdgsvfhjdsgfkheskif</h1>
+<app-ak-input
+[inputType]="'pattern'"
+[id]="'driverLicense'"
+[name]="'driverLicense'"
+[label]="'Driver Licence Number'"
+[minLength]="4"
+[maxLength]="4"
+[(ngModel)]="driverLicense"
+(onInput)="updateValue($event)"
+pattern="^[a-z]{1}\d{1}[A-Z]{2}$"
+[required]="true"
+>
+
+</app-ak-input>
+
+<h1>dnsbdkabskdb</h1>
+
+<app-ak-input
+[inputType]="'normal'"
+[id]="'driv'"
+[name]="'drive'"
+[label]="'Drive'"
+[minLength]="4"
+[maxLength]="4"
+[(ngModel)]="driver"
+(onInput)="updateValues()"
+pattern="^[a-z]{1}\d{1}[A-Z]{2}$"
+[required]="true"
+[disabled]="false" 
+>
+
+</app-ak-input>
+
+
+
+
+<!-- 
+
+
+
+<h1>hi</h1>
+<app-ak-select></app-ak-select>
+<h1>hi</h1>
+
+
+<app-Add-Product></app-Add-Product> -->
+
+
+
